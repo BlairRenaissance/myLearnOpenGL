@@ -1,8 +1,21 @@
 #version 330 core
-layout(location = 0) in vec3 aPos;
-layout(location = 1) in vec3 aColor;
-out vec4 vertexColor;
+
+layout (location = 0) in vec3 aPos;
+layout (location = 1) in vec3 aColor;
+layout (location = 2) in vec2 aTexCoord;
+
+// out vec3 ourColor;
+out vec2 TexCoord;
+
+uniform mat4 transform;
+
 void main(){
-    gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);
-	vertexColor = vec4(aColor.x, aColor.y, aColor.z, 1.0);
+	// 原始图像
+    // gl_Position = vec4(aPos, 1.0);
+    // ourColor = aColor;
+    // TexCoord = aTexCoord;
+
+	// 旋转图像
+	gl_Position = transform * vec4(aPos, 1.0f);
+    TexCoord = vec2(aTexCoord.x, 1.0 - aTexCoord.y); //图片的顶点在左上角，OpenGL的顶点在左下角，需要翻转图片的顶点坐标
 }
