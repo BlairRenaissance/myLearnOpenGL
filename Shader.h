@@ -17,7 +17,7 @@ public:
 	Shader(const char *vertexPath, const char* fragmentPath);
 	void use();
 
-	ifstream vertexFile; //dic -> File Buffer
+	ifstream vertexFile; //dist -> File Buffer
 	ifstream fragmentFile; //File Buffer
 
 	stringstream vertexSStream; //File Buffer -> String Buffer
